@@ -699,7 +699,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="42" minWidth="40" maxWidth="1000" id="IyY-PL-5nX">
+                                                <tableColumn identifier="importantColumn" width="42" minWidth="40" maxWidth="1000" id="IyY-PL-5nX">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="⚠️">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -712,7 +712,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="PiQ-uc-FXF">
+                                                        <tableCellView identifier="importantCell" id="PiQ-uc-FXF">
                                                             <rect key="frame" x="1" y="1" width="42" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -736,7 +736,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="197" minWidth="40" maxWidth="1000" id="Z8G-Lt-PWk">
+                                                <tableColumn identifier="textColumn" width="197" minWidth="40" maxWidth="1000" id="Z8G-Lt-PWk">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="To-Do">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -749,7 +749,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="2O8-0z-nqo">
+                                                        <tableCellView identifier="textCell" id="2O8-0z-nqo">
                                                             <rect key="frame" x="46" y="1" width="197" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -774,6 +774,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="1b0-fz-KIE"/>
+                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="OEj-Rw-IX7"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -811,7 +815,7 @@
                             </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="qLA-qw-gQi">
                                 <rect key="frame" x="260" y="172" width="82" height="18"/>
-                                <buttonCell key="cell" type="check" title="Important" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="c0e-p9-J4a">
+                                <buttonCell key="cell" type="check" title="Important" bezelStyle="regularSquare" imagePosition="left" inset="2" id="c0e-p9-J4a">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -847,6 +851,7 @@
                     </view>
                     <connections>
                         <outlet property="important" destination="qLA-qw-gQi" id="Gth-aQ-YcL"/>
+                        <outlet property="tableView" destination="mf2-kq-MRy" id="Rc6-3R-gGF"/>
                         <outlet property="textField" destination="XAi-Ck-ul7" id="gEI-BP-PCF"/>
                     </connections>
                 </viewController>
