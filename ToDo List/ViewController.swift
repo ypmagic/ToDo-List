@@ -13,6 +13,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     @IBOutlet weak var textField: NSTextField!
     @IBOutlet weak var important: NSButton!
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var deleteButton: NSButton!
     
     var toDoItems : [ToDoItem] = []
     
@@ -48,7 +49,6 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
             (NSApplication.shared().delegate as? AppDelegate)?.saveAction(nil)
             textField.stringValue = ""
             important.state = 0
-            
             getToDoItems()
         }
     }
@@ -78,6 +78,21 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
             }
         }
         return nil
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        deleteButton.isHidden = false
+    }
+    
+    @IBAction func deleteRow(_ sender: Any) {
+        let deleteItem = toDoItems[tableView.selectedRow]
+        if let context = (NSApplication.shared().delegate as? AppDelegate)?.persistentContainer.viewContext {
+            context.delete(deleteItem)
+        }
+        (NSApplication.shared().delegate as? AppDelegate)?.saveAction(nil)
+        
+        getToDoItems()
+        deleteButton.isHidden = true
     }
 }
 
